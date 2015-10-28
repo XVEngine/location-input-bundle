@@ -1,0 +1,117 @@
+xv-location-input {
+  display: block;
+  position: relative;
+  min-height: 45px;
+
+  > label {
+    > span {
+      display: block;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    > div.input {
+      border: 1px solid $border-color;
+      padding: 6px;
+      padding-left: 15px;
+
+      > div {
+        display: inline-block;
+        margin: 4px;
+        font-weight: normal;
+
+        > .close {
+          font: bold 16px Arial, sans-serif;
+          vertical-align: middle;
+        }
+
+        &.adder {
+          position: relative;
+
+          > span {
+            display: inline-block;
+            min-width: 30px;
+            height: 22px;
+            outline: none;
+
+            &:empty {
+              &:after {
+                @extend .xv-placeholder;
+                content: attr(placeholder);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.max-tags {
+    > label {
+      > div.input {
+        > div {
+          &.adder {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  &.required {
+    > label {
+      > span {
+        &:after {
+          content: "*";
+          color: $main-color2;
+        }
+      }
+    }
+  }
+
+  &.invalid {
+    > label {
+      > input {
+        border-color: $main-color2;
+      }
+    }
+  }
+
+  > .autocomplete {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #FFF;
+    width: 100%;
+    z-index: 5;
+
+    > div {
+      padding: 5px;
+      border: 1px solid $border-color;
+      border-bottom-width: 0px;
+
+      &:last-of-type {
+        border-bottom-width: 1px;
+      }
+
+      &.item {
+        cursor: pointer;
+        transition: all 0.3s ease;
+        padding-left: 15px;
+        &:hover {
+          color: $main-color2;
+        }
+
+        &.selected {
+          background: $main-color2;
+          color: #FFF;
+        }
+      }
+
+      &.wait {
+        text-align: center;
+      }
+    }
+  }
+
+}

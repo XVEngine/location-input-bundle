@@ -1,0 +1,22 @@
+{
+    "name": "xvengine/location-input-bundle",
+    "description": "Location input Bundle",
+	"type" : "xvengine-bundle",
+    "authors": [
+        {
+            "name": "Krzysztof Bednarczyk",
+            "email": "admin@bordeux.net",
+            "homepage": "http://bednarczyk.me"
+        }
+    ],
+    "require": {
+		"xvengine/core": "1.*",
+		"xvengine/google-services-bundle": "1.*",
+	},
+    "autoload": {
+        "psr-0": {
+            "XVEngine\\Bundle\\LoactionInputBundle" : ""
+        }
+    },
+	"target-dir": "XVEngine/Bundle/LoactionInputBundle"
+}
