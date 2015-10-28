@@ -2,7 +2,7 @@
 
     namespace.locationInputComponent = app.newClass({
         extend: function () {
-            return app.components.form.abstractInputComponent;
+            return app.core.component.input.abstractInputComponent;
         }
     });
 

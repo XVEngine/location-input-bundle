@@ -2,66 +2,71 @@
 
 namespace Tattool\Bundle\ComponentsBundle\Component\Form\Input;
 
-use Tattool\Bundle\ComponentsBundle\Component\Form\AbstractInput;
 
-class LocationInputComponent extends AbstractInput {
+use XVEngine\Core\Component\Input\AbstractInputComponent;
 
-  
-    
-    public function init() {
-        $this->setComponentName('form.input.locationInputComponent');
-        parent::init();
-    }
-    
+class LocationInputComponent extends AbstractInputComponent {
+
+
     /**
-     * 
-     * @param string $value
-     * @return TagInputComponent
+     * @author Krzysztof Bednarczyk
+     */
+    public function initialize() {
+        $this->setComponentName('form.input.locationInputComponent');
+        parent::initialize();
+    }
+
+
+    /**
+     * @author Krzysztof Bednarczyk
+     * @param $value
+     * @return $this
      */
     public function setAutoPrepend($value){
         $this->setParam('autoPrepend', $value);
         
         return $this;
     }
-    
+
     /**
-     * 
-     * @param string $value
-     * @return TagInputComponent
+     * @author Krzysztof Bednarczyk
+     * @param $value
+     * @return $this
      */
     public function setPlaceholder($value){
         $this->setParam('placeholder', $value);
         
         return $this;  
     }
-    
-    
+
+
     /**
-     * 
-     * @param int $value
-     * @return TagInputComponent
+     * @author Krzysztof Bednarczyk
+     * @param $value
+     * @return $this
      */
     public function setMaxTags($value){
         $this->setParam('maxTags', (int) $value);
         
         return $this;  
     }
-    
+
+
     /**
-     * 
-     * @param string $url
-     * @return TagInputComponent
+     * @author Krzysztof Bednarczyk
+     * @param $url
+     * @return $this
      */
     public function setURL($url){
         $this->setParam('url', $url);
         
         return $this;  
     }
-    
+
     /**
-     * 
-     * @param boolean $value
-     * @return TagInputComponent
+     * @author Krzysztof Bednarczyk
+     * @param $value
+     * @return $this
      */
     public function setOnlyFromAutocomplete($value){
         $this->setParam('onlyFromAutoComplete', !!$value);
@@ -71,8 +76,8 @@ class LocationInputComponent extends AbstractInput {
 
 
     /**
-     * @param $tags
-     *
+     * @author Krzysztof Bednarczyk
+     * @param mixed|string $tags
      * @return $this
      */
     public function setValue($tags){
@@ -82,8 +87,8 @@ class LocationInputComponent extends AbstractInput {
 
 
     /**
+     * @author Krzysztof Bednarczyk
      * @param $selector
-     *
      * @return $this
      */
     public function setFocusNextSelector($selector){
@@ -92,13 +97,12 @@ class LocationInputComponent extends AbstractInput {
     }
 
     /**
-     *
-     * @param string $key
-     * @return TagInputComponent
+     * @author Krzysztof Bednarczyk
+     * @param $key
+     * @return $this
      */
     public function setApiKey($key){
         $this->setParam('apiKey', $key);
-
         return $this;
     }
 
