@@ -11,7 +11,7 @@
     ],
     "require": {
 		"xvengine/core": "1.*",
-		"xvengine/google-services-bundle": "1.*",
+		"xvengine/google-services-bundle": "1.*"
 	},
     "autoload": {
         "psr-0": {
