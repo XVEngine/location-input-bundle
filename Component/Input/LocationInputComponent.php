@@ -1,6 +1,6 @@
 <?php
 
-namespace Tattool\Bundle\ComponentsBundle\Component\Form\Input;
+namespace XVEngine\Bundle\LoactionInputBundle\Component\Input;
 
 
 use XVEngine\Core\Component\Input\AbstractInputComponent;
@@ -12,7 +12,7 @@ class LocationInputComponent extends AbstractInputComponent {
      * @author Krzysztof Bednarczyk
      */
     public function initialize() {
-        $this->setComponentName('form.input.locationInputComponent');
+        $this->setComponentName('input.locationInputComponent');
         parent::initialize();
     }
 
@@ -22,54 +22,8 @@ class LocationInputComponent extends AbstractInputComponent {
      * @param $value
      * @return $this
      */
-    public function setAutoPrepend($value){
-        $this->setParam('autoPrepend', $value);
-        
-        return $this;
-    }
-
-    /**
-     * @author Krzysztof Bednarczyk
-     * @param $value
-     * @return $this
-     */
     public function setPlaceholder($value){
         $this->setParam('placeholder', $value);
-        
-        return $this;  
-    }
-
-
-    /**
-     * @author Krzysztof Bednarczyk
-     * @param $value
-     * @return $this
-     */
-    public function setMaxTags($value){
-        $this->setParam('maxTags', (int) $value);
-        
-        return $this;  
-    }
-
-
-    /**
-     * @author Krzysztof Bednarczyk
-     * @param $url
-     * @return $this
-     */
-    public function setURL($url){
-        $this->setParam('url', $url);
-        
-        return $this;  
-    }
-
-    /**
-     * @author Krzysztof Bednarczyk
-     * @param $value
-     * @return $this
-     */
-    public function setOnlyFromAutocomplete($value){
-        $this->setParam('onlyFromAutoComplete', !!$value);
         
         return $this;  
     }
@@ -106,14 +60,4 @@ class LocationInputComponent extends AbstractInputComponent {
         return $this;
     }
 
-
-    /**
-     *
-     * @author Krzysztof Bednarczyk
-     * @param array $tags
-     * @return $this
-     */
-    public function setBlockedTags(array $tags){
-        return $this->setParam("blockedTags", $tags);
-    }
 }

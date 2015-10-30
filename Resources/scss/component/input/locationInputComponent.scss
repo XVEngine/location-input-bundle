@@ -1,7 +1,6 @@
 xv-location-input {
   display: block;
   position: relative;
-  min-height: 45px;
 
   > label {
     > span {
@@ -10,47 +9,60 @@ xv-location-input {
       font-weight: 500;
     }
 
-    > div.input {
-      border: 1px solid $border-color;
-      padding: 6px;
-      padding-left: 15px;
+    > div {
+      position: relative;
+      > input {
+        width: 100%;
+        height: 45px;
+        border: 1px solid $border-color;
+        padding-right: 50px;
+        &:focus {
+          outline: 1px solid $border-color;
+        }
+      }
 
-      > div {
-        display: inline-block;
-        margin: 4px;
-        font-weight: normal;
+      > .clear-input {
+        pointer-events: none;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        top: 0;
+        width: 45px;
+        text-align: center;
+        font-size: 25px;
+        border-left: 1px solid $border-color;
 
-        > .close {
-          font: bold 16px Arial, sans-serif;
-          vertical-align: middle;
+        &:hover {
+          color: $main-color2;
         }
 
-        &.adder {
-          position: relative;
-
-          > span {
-            display: inline-block;
-            min-width: 30px;
-            height: 22px;
-            outline: none;
-
-            &:empty {
-              &:after {
-                @extend .xv-placeholder;
-                content: attr(placeholder);
-              }
-            }
+        > .icon {
+          &:before {
+           line-height: 47px;
           }
+        }
+
+        > .search {
+          display: inline-block;
+        }
+
+        > .close {
+          display: none;
         }
       }
     }
+
   }
 
-  &.max-tags {
+  &.has-value {
     > label {
-      > div.input {
-        > div {
-          &.adder {
+      > div {
+        > .clear-input {
+          pointer-events: auto;
+          > .close {
+            display: inline-block;
+          }
+          > .search {
             display: none;
           }
         }
@@ -69,10 +81,19 @@ xv-location-input {
     }
   }
 
-  &.invalid {
+  &.invalid, &.invalidated {
     > label {
-      > input {
+      .input {
         border-color: $main-color2;
+        outline-color: $main-color2;
+      }
+    }
+  }
+
+  &.without-label {
+    > label {
+      > span {
+        display: none;
       }
     }
   }
@@ -113,5 +134,4 @@ xv-location-input {
       }
     }
   }
-
 }
