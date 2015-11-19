@@ -44,8 +44,6 @@
     };
 
 
-    namespace.locationInputComponent.prototype.validators = {};
-
 
     namespace.locationInputComponent.prototype.getDefaultParams = function() {
         return {
@@ -188,7 +186,17 @@
         
         return true;
     };
-    
+
+
+    namespace.locationInputComponent.prototype.validators = {
+        "required": function(value) {
+            if(!this._required){
+                return true;
+            }
+
+            return !!this._value
+        }
+    };
 
     
     namespace.locationInputComponent.prototype.setInputValue = function(value) {
@@ -304,11 +312,39 @@
     };
 
 
+    namespace.locationInputComponent.prototype.convertLocation = function(place){
+        return {
+            "lat" : place.lat(),
+            "lng" : place.lng()
+        };
+    };
+
+
     namespace.locationInputComponent.prototype.getValue = function() {
         if(!this._value){
             return null;
         }
-        return this.getPlace(this._value.id);
+        var self = this;
+        return this.getPlace(this._value.id).then(function(place){
+
+            return {
+                "id" : place.id,
+                "place_id" : place.place_id,
+                "formatted_address" : place.formatted_address,
+                "types" : place.types,
+                "url" : place.url,
+                "name" : place.name,
+                "vicinity" : place.vicinity,
+                "geometry" : {
+                    "location" : self.convertLocation(place.geometry.location),
+                    "viewport" : !place.geometry.viewport ?  null : {
+                        "center" : self.convertLocation(place.geometry.viewport.getCenter()),
+                        "northEast" : self.convertLocation(place.geometry.viewport.getNorthEast()),
+                        "southWest" : self.convertLocation(place.geometry.viewport.getSouthWest())
+                    }
+                }
+            }
+        })
     };
 
 
